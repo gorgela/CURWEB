@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="checkout.css">
+
+</head>
+<body>
+    <h3>Checkout:</h3>
+
+    <form class="contact-form" action="https://api.web3forms.com/submit" method="POST" id="checkoutForm">
+        <input type="hidden" name="access_key" value="e7b55938-c5cf-4859-9562-3b5623a388c8">
+        <input type="hidden" name="product" value="Poco M6 Pro">
+        <input type="hidden" name="color" id="colorInput" value="">
+        <input type="hidden" name="quantity" id="quantityInput" value="">
+
+        <div class="color-section">
+            <h4>Select Color:</h4>
+            <div class="color-options">
+                <div class="color-option">
+                    <img src="../Phones Pictures/purple poco .jpg" alt="Purple" title="Purple" class="color-image" onclick="selectColor('Purple', this)">
+                    <div class="color-box" style="background-color: purple;"></div> <!-- Color box -->
+                </div>
+                <div class="color-option">
+                    <img src="../Phones Pictures/poco black.png" alt="Black" title="Black" class="color-image" onclick="selectColor('Black', this)">
+                    <div class="color-box" style="background-color: black;"></div> <!-- Color box -->
+                </div>
+                <div class="color-option">
+                    <img src="../Phones Pictures/blue poco.jpg" alt="Blue" title="Blue" class="color-image" onclick="selectColor('Blue', this)">
+                    <div class="color-box" style="background-color: blue;"></div> <!-- Color box -->
+                </div>
+            </div>
+        </div>
+        
+
+        <div class="quantity-container">
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" value="1" min="1" style="width: 60px;">
+        </div>
+
+        <input type="text" name="name" placeholder="Your Name" required class="form-input">
+        <input type="email" name="email" placeholder="Your Email" required class="form-input">
+        <input type="tel" name="phone" placeholder="Your Phone Number" required class="form-input">
+        <input type="text" name="location" placeholder="Your Location" required class="form-input">
+        <textarea name="message" placeholder="Your Message" required class="form-textarea"></textarea>
+
+        <div class="payment-method">
+            <h4>Select Payment Method:</h4>
+            <select name="payment" required class="form-input">
+                <option value="" disabled selected>Select payment method</option>
+                <option value="cash">Cash</option>
+                <option value="online">Online Payment</option>
+            </select>
+        </div>
+
+        <button type="submit" class="form-button">Order Now</button>
+        <button class="back-button" onclick="window.location.href='../WEBSITE/phones.html'">Back</button>
+        
+    </form>
+
+    <script>
+        function selectColor(color, element) {
+            // Remove selected class from all colors
+            const colors = document.querySelectorAll('.color-image');
+            colors.forEach(img => {
+                img.classList.remove('selected');
+            });
+
+            // Add selected class to the clicked color
+            element.classList.add('selected');
+
+            // Update hidden color input
+            document.getElementById('colorInput').value = color;
+        }
+
+        // Update the quantity input when the user types
+        const quantityInput = document.getElementById('quantity');
+        quantityInput.addEventListener('input', function() {
+            document.getElementById('quantityInput').value = this.value;
+        });
+    </script>
+</body>
+</html>
